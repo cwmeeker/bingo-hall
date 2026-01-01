@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bingo Caller</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/caller.css">
+</head>
+<body>
+
+    <h1>Bingo Caller</h1>
+
+    <div class="last-number-label">Last Number Called:</div>
+    <div id="last-number" class="last-number">None</div>
+
+    <div id="called-count" class="called-count">Numbers Called: 0 / 75</div>
+
+    <button id="draw-button">Draw Number</button>
+    <button id="new-game-button">New Game</button>
+
+    <table id="caller-board"></table>
+    
+    <div class="auto-controls">
+        <div class="auto-row">
+            <input type="checkbox" id="autoCallerToggle" checked>
+            <label for="autoCaller">Enable Automatic Caller</label>
+        </div>
+
+        <div class="auto-row">
+            <label for="callDelay">Time Between Numbers (seconds):</label>
+            <input type="number" id="numDelay" min="1" value="5">
+        </div>
+
+        <div class="auto-row">
+            <label for="gameDelay">Time Between Games (seconds):</label>
+            <input type="number" id="gameDelay" min="5" value="30">
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/caller.js"></script>
+
+</body>
+</html>

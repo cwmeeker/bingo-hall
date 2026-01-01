@@ -1,0 +1,161 @@
+/* =========================
+   Global look & feel
+   ========================= */
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: radial-gradient(circle at center, #3a2622 0%, #1e1412 100%);
+    color: #f8f2e7;
+    font-family: system-ui, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #ffcc33;
+    text-shadow: 0 0 10px rgba(255, 204, 51, 0.4);
+    margin-bottom: 10px;
+}
+
+/* =========================
+   Last number + count
+   ========================= */
+
+#last-number {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px 0 20px 0;
+    border-radius: 50px;
+    background: radial-gradient(circle at 30% 20%, #ffec99 0%, #ffcc33 40%, #8b0000 100%);
+    color: #210b0b;
+    font-size: 2rem;
+    font-weight: 800;
+    box-shadow: 0 0 12px rgba(255, 204, 51, 0.8);
+}
+
+#called-count {
+    font-size: 1.1rem;
+    color: #ffcc33;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+button {
+    background: linear-gradient(to bottom, #8b0000, #4b0000);
+    color: #ffeb99;
+    border: 2px solid #ffcc33;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background: #a30000;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* =========================
+   Number grid (1–75)
+   ========================= */
+
+#caller-board {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 95%;
+    max-width: 700px;
+}
+
+#caller-board th {
+    background: linear-gradient(to bottom, #5d0000, #2e0000);
+    color: #ffcc33;
+    padding: 6px;
+    font-size: 1.2rem;
+    border: 1px solid #5a403b;
+}
+
+#caller-board td {
+    background: #291714;
+    border: 1px solid #5a403b;
+    color: #f8f2e7;
+    padding: 6px;
+    width: 40px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+/* Called numbers */
+#caller-board td.called {
+    background: #8b0000;
+    color: #fff;
+}
+
+/* Most recent number */
+#caller-board td.recent {
+    background: #ffcc33;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 204, 51, 0.8);
+}
+
+/* =========================
+   Automatic Caller Panel
+   ========================= */
+
+.auto-controls {
+    margin: 25px auto;
+    padding: 18px 22px;
+    background: rgba(25, 16, 13, 0.85);
+    border: 1px solid rgba(255, 204, 51, 0.25);
+    border-radius: 12px;
+    max-width: 420px;
+    text-align: left;
+    box-shadow:
+        0 0 18px rgba(0,0,0,0.7),
+        0 0 10px rgba(255, 204, 51, 0.15);
+}
+
+/* Each row inside the panel */
+.auto-controls .auto-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* Labels inside auto-controls only */
+.auto-controls label {
+    font-weight: 600;
+    color: #ffeb99;
+    margin-left: 8px;
+}
+
+/* Checkbox inside auto-controls only */
+.auto-controls input[type="checkbox"] {
+    transform: scale(1.3);
+    accent-color: #ffcc33;
+}
+
+/* Number inputs inside auto-controls only */
+.auto-controls input[type="number"] {
+    width: 80px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #b89b7a;
+    background: #fffaf2;
+    color: #3a2622;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+    margin-left: 10px;
+}
+

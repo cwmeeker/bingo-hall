@@ -1,0 +1,88 @@
+/* =========================
+   Global look & feel
+   ========================= */
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background: radial-gradient(circle at center, #3a2622 0%, #1e1412 100%);
+    color: #f8f2e7;
+    font-family: system-ui, sans-serif;
+    text-align: center;
+}
+
+/* =========================
+   Title
+   ========================= */
+
+h1 {
+    color: #ffcc33;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow:
+        0 0 12px rgba(255, 204, 51, 0.6),
+        0 0 20px rgba(255, 204, 51, 0.3);
+}
+
+/* Optional subtitle */
+.subtitle {
+    font-size: 1.2rem;
+    color: #ffeb99;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* =========================
+   Buttons / links
+   ========================= */
+
+a.button,
+button {
+    display: inline-block;
+    background: linear-gradient(to bottom, #8b0000, #4b0000);
+    color: #ffeb99;
+    border: 2px solid #ffcc33;
+    padding: 14px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 15px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    box-shadow:
+        0 0 10px rgba(0,0,0,0.8),
+        0 0 8px rgba(255, 204, 51, 0.2);
+}
+
+a.button:hover,
+button:hover {
+    background: #a30000;
+    transform: translateY(-2px);
+}
+
+a.button:active,
+button:active {
+    transform: translateY(1px);
+}
+
+/* =========================
+   Container (optional)
+   ========================= */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================
+   Footer (optional)
+   ========================= */
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #ffcc33;
+    opacity: 0.7;
+}
