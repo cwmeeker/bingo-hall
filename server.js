@@ -228,8 +228,8 @@ io.on("connection", socket => {
         }
     });
 
-    socket.emit("restoreState", playerState[socket.id]);
-    
+    socket.emit("restoreState", playerStates[socket.id]);
+
     console.log("Socket connected:", socket.id, "playerId:", playerId);
 
     // Sync current state
