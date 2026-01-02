@@ -228,8 +228,6 @@ io.on("connection", socket => {
         }
     });
 
-    socket.emit("restoreState", playerStates[socket.id]);
-
     console.log("Socket connected:", socket.id, "playerId:", playerId);
 
     // Sync current state
@@ -244,6 +242,11 @@ io.on("connection", socket => {
         }
 
         socket.emit("cardData", playerCards[playerId]);
+
+        socket.emit("restoreState", {
+            marked: Array.from(playerStates[socket.id].marked)
+        });
+
     });
 
     // Caller draws a number
