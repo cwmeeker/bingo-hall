@@ -310,7 +310,7 @@ io.on("connection", socket => {
 
         console.log("Socket disconnected:", socket.id, "playerId:", playerId);
 
-        delete playerStates[socket.id];
+        // delete playerStates[socket.id];
     });
 });
 
