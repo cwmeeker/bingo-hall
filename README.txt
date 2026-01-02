@@ -75,6 +75,10 @@ If you want to run the app in Docker:
 ```bash
 docker build -t bingo-hall .
 docker run -p 8080:8080 bingo-hall
+
+or
+
+docker compose up -d
 ```
 
 -----------------------------------------------------------------------------------------------------
@@ -108,5 +112,6 @@ If you have ideas for new features — animations, themes, accessibility improve
 MIT License — free to use, modify, and share.
 
 ____________________________________________________________________________________________________
+
 
 
