@@ -1,8 +1,10 @@
+_____________________________________________________________________________________________________
+
 # 🎉 **Bingo Hall — A Real‑Time Multiplayer Bingo Web App**
 
 A fast, lightweight, open‑source Bingo web app designed for **local network play**, family game nights, and small events. Features a dedicated **caller page**, **player page**, real‑time sync via Socket.IO, multi‑card support, voice output, and a classic bingo‑hall aesthetic.
 
----
+-----------------------------------------------------------------------------------------------------
 
 ## 🚀 Features
 
@@ -37,7 +39,7 @@ A fast, lightweight, open‑source Bingo web app designed for **local network pl
 - No database required  
 - Optional Docker support  
 
----
+-----------------------------------------------------------------------------------------------------
 
 ## 📦 Installation
 
@@ -73,7 +75,7 @@ docker build -t bingo-hall .
 docker run -p 8080:8080 bingo-hall
 ```
 
----
+-----------------------------------------------------------------------------------------------------
 
 ## 📁 Project Structure
 
@@ -90,15 +92,17 @@ Dockerfile (optional)
 README.md
 ```
 
----
+-----------------------------------------------------------------------------------------------------
 
 ## 🤝 Contributing
 
 Pull requests are welcome.  
 If you have ideas for new features — animations, themes, accessibility improvements — feel free to open an issue.
 
----
+-----------------------------------------------------------------------------------------------------
 
 ## 📜 License
 
 MIT License — free to use, modify, and share.
+
+____________________________________________________________________________________________________
