@@ -93,15 +93,24 @@ function renderCards(cardsArray) {
                 cell.dataset.col = c;
                 cell.dataset.cardIndex = index;
 
+            // 🔥 Add this line — this is your cellIndex
+                cell.dataset.index = r * 5 + c;
+
                 if (value !== "FREE") cell.dataset.num = value;
 
                 cell.classList.add("cell");
 
                 if (r === 2 && c === 2) {
-                    cell.classList.add("free", "marked");
+                cell.classList.add("free", "marked");
                 } else {
                     cell.addEventListener("click", () => {
-                        cell.classList.toggle("marked");
+                        const isNowMarked = cell.classList.toggle("marked");
+                        const cellIndex = Number(cell.dataset.index);
+
+                        socket.emit("markSquare", {
+                            index: cellIndex,
+                            marked: isNowMarked
+                        });
                     });
                 }
 

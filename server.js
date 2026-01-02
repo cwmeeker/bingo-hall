@@ -35,6 +35,8 @@ const allNumbers = Array.from({ length: 75 }, (_, i) => i + 1);
 let calledNumbers = [];
 const playerCards = {}; // keyed by playerId
 
+const playerStates = {};
+
 let autoCallerEnabled = true;
 let autoCallerInterval = null;
 let autoGameInterval = null;
@@ -208,6 +210,26 @@ function validateBingo(card, markedCells, called) {
 // ------------------------------------------------------------
 io.on("connection", socket => {
     const playerId = socket.handshake.query.playerId || null;
+
+    playerStates[socket.id] = {
+        card: [],
+        marked: new Set()
+    };
+
+    socket.on("markSquare", ({ index, marked }) => {
+        const state = playerStates[socket.id];
+        if (!state) return;
+
+        if (marked) {
+            state.marked.add(index);
+            
+        } else {
+            state.marked.delete(index)
+        }
+    });
+
+    socket.emit("restoreState", playerState[socket.id]);
+    
     console.log("Socket connected:", socket.id, "playerId:", playerId);
 
     // Sync current state
@@ -278,7 +300,10 @@ io.on("connection", socket => {
     });
 
     socket.on("disconnect", () => {
+
         console.log("Socket disconnected:", socket.id, "playerId:", playerId);
+
+        delete playerStates[socket.id];
     });
 });
 
