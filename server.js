@@ -228,6 +228,8 @@ io.on("connection", socket => {
         } else {
             state.marked.delete(index);
         }
+
+        console.log("SERVER MARKED SET for", playerId, "=>", Array.from(state.marked));
     });
 
     console.log("Socket connected:", socket.id, "playerId:", playerId);
