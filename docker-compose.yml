@@ -1,9 +1,7 @@
-version: "3.9"
-
 services:
-  bingo:
-    build: .
-    container_name: socket-bingo
+  bingo-hall:
+    image: ghcr.io/cwmeeker/bingo-hall:latest
+    container_name: bingo-hall
+    restart: unless-stopped
     ports:
       - "8887:8080"
-    restart: unless-stopped
