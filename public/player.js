@@ -180,6 +180,15 @@ socket.on("connect", () => {
     socket.emit("getCard", count);
 });
 
+socket.on("restoreState", (state) => {
+    requestAnimationFrame(() => {
+        state.marked.forEach(index => {
+            const cell = document.querySelector(`[data-index="${index}"]`);
+            if (cell) cell.classList.add("marked");
+        });
+    });
+});
+
 socket.on("cardData", cardsArray => {
     card = cardsArray;
     renderCards(cardsArray);
