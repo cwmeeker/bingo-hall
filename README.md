@@ -77,7 +77,11 @@ If you want to run the app in Docker:
 docker build -t bingo-hall .
 docker run -p 8080:8080 bingo-hall
 ```
+or with docker compose:
 
+```bash
+docker compose up -d
+```
 -----------------------------------------------------------------------------------------------------
 
 ## 📁 Project Structure
