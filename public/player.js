@@ -94,7 +94,7 @@ function renderCards(cardsArray) {
                 cell.dataset.cardIndex = index;
 
             // 🔥 Add this line — this is your cellIndex
-                cell.dataset.index = r * 5 + c;
+                cell.dataset.index = index * 25 + (r * 5 + c);
 
                 if (value !== "FREE") cell.dataset.num = value;
 
