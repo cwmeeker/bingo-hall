@@ -211,20 +211,22 @@ function validateBingo(card, markedCells, called) {
 io.on("connection", socket => {
     const playerId = socket.handshake.query.playerId || null;
 
-    playerStates[socket.id] = {
-        card: [],
-        marked: new Set()
-    };
+    if (playerId && !playerStates[playerId]) {
+        playerStates[playerId] = {
+            card: [],
+            marked: new Set()
+        };
+    }
 
     socket.on("markSquare", ({ index, marked }) => {
-        const state = playerStates[socket.id];
+        if (!playerId) return;
+        const state = playerStates[playerId];
         if (!state) return;
 
         if (marked) {
             state.marked.add(index);
-            
         } else {
-            state.marked.delete(index)
+            state.marked.delete(index);
         }
     });
 
@@ -243,9 +245,11 @@ io.on("connection", socket => {
 
         socket.emit("cardData", playerCards[playerId]);
 
-        socket.emit("restoreState", {
-            marked: Array.from(playerStates[socket.id].marked)
-        });
+        if (playerId && playerStates[playerId]) {
+            socket.emit("restoreState", {
+                marked: Array.from(playerStates[playerId].marked)
+            });
+        }
 
     });
 
