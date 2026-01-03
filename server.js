@@ -256,8 +256,9 @@ io.on("connection", socket => {
         console.log("marked state of cards is:", state);
 
         socket.emit("cardAndState", {
-            cards: playerCards[playerId],
-            marked: state ? Array.from(state.marked) : []
+            cards: playerCards[playerId]
+            // ,
+            // marked: state ? Array.from(state.marked) : []
         });
     });
 
