@@ -243,6 +243,7 @@ io.on("connection", socket => {
         if (!playerId) return;
 
         if (!playerCards[playerId] || playerCards[playerId].length !== count) {
+            console.log("generateCard function")
             playerCards[playerId] = Array.from({ length: count }, () => generateCard());
         }
 
