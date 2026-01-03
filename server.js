@@ -253,6 +253,7 @@ io.on("connection", socket => {
         const state = playerStates[playerId];
         
         console.log("Player cards for", playerId, "is", playerCards[playerId]);
+        console.log("marked state of cards is:", state);
 
         socket.emit("cardAndState", {
             cards: playerCards[playerId],
