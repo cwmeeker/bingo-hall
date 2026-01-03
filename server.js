@@ -35,8 +35,6 @@ const allNumbers = Array.from({ length: 75 }, (_, i) => i + 1);
 let calledNumbers = [];
 const playerCards = {}; // keyed by playerId
 
-const playerStates = {};
-
 let autoCallerEnabled = true;
 let autoCallerInterval = null;
 let autoGameInterval = null;
@@ -71,9 +69,6 @@ function generateCard() {
     }
 
     card[2][2] = "FREE";
-
-    console.log("Card generated", card);
-
     return card;
 }
 
@@ -121,7 +116,7 @@ function startAutoCaller() {
         const { num, letter } = next;
         calledNumbers.push(num);
 
-        // console.log("AUTO DRAW:", letter + num, "calledNumbers:", calledNumbers);
+        console.log("AUTO DRAW:", letter + num, "calledNumbers:", calledNumbers);
 
         io.emit("numberCalled", { num, letter, calledNumbers });
     }, timeBetweenNumbers);
@@ -213,28 +208,6 @@ function validateBingo(card, markedCells, called) {
 // ------------------------------------------------------------
 io.on("connection", socket => {
     const playerId = socket.handshake.query.playerId || null;
-
-    if (playerId && !playerStates[playerId]) {
-        playerStates[playerId] = {
-            card: [],
-            marked: new Set()
-        };
-    }
-
-    socket.on("markSquare", ({ index, marked }) => {
-        if (!playerId) return;
-        const state = playerStates[playerId];
-        if (!state) return;
-
-        if (marked) {
-            state.marked.add(index);
-        } else {
-            state.marked.delete(index);
-        }
-
-        console.log("SERVER MARKED SET for", playerId, "=>", Array.from(state.marked));
-    });
-
     console.log("Socket connected:", socket.id, "playerId:", playerId);
 
     // Sync current state
@@ -242,24 +215,13 @@ io.on("connection", socket => {
 
     // Player requests cards
     socket.on("getCard", (count = 1) => {
-        console.log("Requesting card(s) for playerId:", playerId);
         if (!playerId) return;
 
         if (!playerCards[playerId] || playerCards[playerId].length !== count) {
-            console.log("generateCard function")
             playerCards[playerId] = Array.from({ length: count }, () => generateCard());
         }
 
-        const state = playerStates[playerId];
-        
-        console.log("Player cards for", playerId, "is", playerCards[playerId]);
-        console.log("marked state of cards is:", state);
-
-        socket.emit("cardAndState", {
-            cards: playerCards[playerId]
-            // ,
-            // marked: state ? Array.from(state.marked) : []
-        });
+        socket.emit("cardData", playerCards[playerId]);
     });
 
     // Caller draws a number
@@ -316,10 +278,7 @@ io.on("connection", socket => {
     });
 
     socket.on("disconnect", () => {
-
         console.log("Socket disconnected:", socket.id, "playerId:", playerId);
-
-        // delete playerStates[socket.id];
     });
 });
 
