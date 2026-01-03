@@ -239,6 +239,7 @@ io.on("connection", socket => {
 
     // Player requests cards
     socket.on("getCard", (count = 1) => {
+        console.log("Requesting card(s) for playerId:", playerId);
         if (!playerId) return;
 
         if (!playerCards[playerId] || playerCards[playerId].length !== count) {
