@@ -181,6 +181,7 @@ socket.on("connect", () => {
 });
 
 socket.on("cardAndState", ({ cards, marked }) => {
+    console.log("Received card:", { cards, marked });
     card = cards;
     renderCards(cards);
     cardReady = true;
