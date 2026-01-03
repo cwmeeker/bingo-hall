@@ -180,19 +180,18 @@ socket.on("connect", () => {
     socket.emit("getCard", count);
 });
 
-socket.on("restoreState", (state) => {
-    requestAnimationFrame(() => {
-        state.marked.forEach(index => {
+socket.on("cardAndState", ({ cards, marked }) => {
+    card = cards;
+    renderCards(cards);
+    cardReady = true;
+
+    // Restore marks immediately on the freshly rendered DOM
+    if (Array.isArray(marked)) {
+        marked.forEach(index => {
             const cell = document.querySelector(`[data-index="${index}"]`);
             if (cell) cell.classList.add("marked");
         });
-    });
-});
-
-socket.on("cardData", cardsArray => {
-    card = cardsArray;
-    renderCards(cardsArray);
-    cardReady = true;
+    }
 
     pendingCalls.forEach(num => highlight(num));
     pendingCalls = [];

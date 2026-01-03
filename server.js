@@ -245,14 +245,12 @@ io.on("connection", socket => {
             playerCards[playerId] = Array.from({ length: count }, () => generateCard());
         }
 
-        socket.emit("cardData", playerCards[playerId]);
+        const state = playerStates[playerId];
 
-        if (playerId && playerStates[playerId]) {
-            socket.emit("restoreState", {
-                marked: Array.from(playerStates[playerId].marked)
-            });
-        }
-
+        socket.emit("cardAndState", {
+            cards: playerCards[playerId],
+            marked: state ? Array.from(state.marked) : []
+        });
     });
 
     // Caller draws a number
