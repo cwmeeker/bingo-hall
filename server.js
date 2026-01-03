@@ -72,6 +72,7 @@ function generateCard() {
 
     card[2][2] = "FREE";
     return card;
+    console.log("Card generated", card);
 }
 
 function getLetterForNumber(num) {
